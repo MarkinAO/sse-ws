@@ -1,39 +1,43 @@
 import ChatAPI from "./api/ChatAPI";
+import Modal from "./Modal";
 
 export default class Chat {
   constructor(container) {
     this.container = container;
+    this.contentBox = null;
     this.api = new ChatAPI();
-    this.websocket = null;
+    // this.ws = new WebSocket('ws://sse-ws-dashboard-backend.onrender.com/ws');
+    this.modal = new Modal();
   }
 
-  async init() {
+  init() {
     this.registerEvents();
     this.bindToDOM();
+    // this.modal.open();
+    // this.modal.addOnBtnHandler(this.onBtnHandler);
+    this.showChat();
   }
 
   bindToDOM() {
     this.createDashboard();
   }
 
-  registerEvents() {
-    const ws = new WebSocket('ws://sse-ws-dashboard-backend.onrender.com/ws');
-    
-        ws.addEventListener('open', (e) => {
-            console.log(e)
-        })
+  registerEvents() {    
+      // this.ws.addEventListener('open', (e) => {
+      //     console.log(e)
+      // })
 
-        ws.addEventListener('errore', (e) => {
-            console.log(e)
-        })
+      // this.ws.addEventListener('errore', (e) => {
+      //     console.log(e)
+      // })
 
-        ws.addEventListener('message', (e) => {
-            console.log(e)
-        })
+      // this.ws.addEventListener('message', (e) => {
+      //     console.log(e)
+      // })
 
-        ws.addEventListener('close', (e) => {
-            console.log(e)
-        })
+      // this.ws.addEventListener('close', (e) => {
+      //     console.log(e)
+      // })
   }
 
   subscribeOnEvents() {}
@@ -62,18 +66,40 @@ export default class Chat {
       decorPanel.appendChild(cercle);
     }
 
-    const header = document.createElement('div');
-    header.classList.add('header');
-    container.appendChild(header);
-
-    const addTicketBtn = document.createElement('div');
-    addTicketBtn.classList.add('btn');
-    addTicketBtn.textContent = 'Добавить тикет';
-
-    header.appendChild(addTicketBtn);
-
     this.contentBox = document.createElement('div');
     this.contentBox.classList.add('contentBox');
     container.appendChild(this.contentBox);
+  }
+
+  async onBtnHandler(nickName) {    
+    const user = { name: nickName };
+
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(user),
+    };
+
+    const url = 'https://sse-ws-dashboard-backend.onrender.com/new-user';
+
+    const res = await fetch(url, options);
+    
+    if(!res.ok) {
+      this.modal.showErrore();
+      return;
+    }
+
+    this.modal.close();
+    this.showChat();
+  }
+
+  showChat() {
+    const chatConnect = document.createElement('div');
+    chatConnect.classList.add('chat__connect');
+    this.contentBox.append(chatConnect);
+    chatConnect.textContent = 'A row is created for every separate string listed, and a column is created for each cell in the string. Multiple cell tokens with the same name within and between rows create a single named grid area that spans the corresponding grid cells. Unless those cells form a rectangle, the declaration is invalid. '
+
+    const chatArea = document.createElement('div');
+    chatArea.classList.add('chat__area');
+    this.contentBox.append(chatArea);
   }
 }
