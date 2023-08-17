@@ -1,17 +1,15 @@
 import createRequest from './createRequest';
 
 export default class Entity {
-  constructor(url) {
-    this.url = url;
+  constructor(ws) {
+    this.ws = ws;
   }
 
   list() {}
 
   get() {}
 
-  create() {
-    
-  }
+  create() {}
 
   update() {}
 

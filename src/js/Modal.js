@@ -9,6 +9,7 @@ export default class Modal {
     this.wrap = null;
     this.btn = null;
     this.input = null;
+    this.error = null;
   }
 
   open() {
@@ -24,7 +25,7 @@ export default class Modal {
 
     const header = document.createElement('div');
     header.classList.add('header');
-    header.textContent = 'Выберите псевдоним';        
+    header.textContent = 'Выберите псевдоним';
     modal.append(header);
 
     const input = document.createElement('input');
@@ -33,6 +34,11 @@ export default class Modal {
     input.setAttribute('type', 'text');
     modal.append(input);
     this.input = input;
+
+    const errBox = document.createElement('div');
+    errBox.classList.add('errore');
+    this.error = errBox;
+    this.input.after(errBox);
 
     const buttonBox = document.createElement('div');
     buttonBox.classList.add('modal-button-box');
@@ -58,20 +64,22 @@ export default class Modal {
     this.wrap = null;
   }
 
-  addOnBtnHandler(handler) {
+  addOnClickHandler(handler) {
     this.btn.addEventListener('click', (e) => {
       e.preventDefault();
+      this.clearError();
       const nickname = this.input.value;        
       if(!nickname) return;
       handler(nickname);
     })
   }
 
-  showErrore() {
-    const errBox = document.createElement('div');
-    errBox.classList.add('errore');
-    errBox.textContent = 'Псевдоним уже занят!';
-    this.input.after(errBox);
+  showError() {    
+    this.error.textContent = 'Псевдоним уже занят!';
+  }
+
+  clearError() {
+    this.error.textContent = '';
   }
 }
   
