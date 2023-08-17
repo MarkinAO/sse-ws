@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #edefec;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+#root {
+  font-family: 'Roboto', sans-serif;
+  color: #100c08;
+  padding-top: 20px;
+}
+
+.container {
+  width: 60%;
+  min-width: 500px;
+  min-height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  background-image: url(eb58cc39d7566606771e.png);
+  background-repeat: repeat;
+  /* filter: grayscale(1); */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.decorPanel {
+  padding: 10px 20px;
+  background-color: lightgrey;
+  border-radius: 5px 5px 0 0;
+}
+
+.cercle {
+  display: inline-block;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: gray;
+  border-radius: 50%;
+}
+
+.contentBox {
+  display: flex;  
+  align-items: flex-start;
+  padding: 30px 50px;
+}
+
+.chat__connect {
+  padding: 15px 15px 15px 40px;
+  margin: 20px 0;
+  max-width: 25%;
+  min-height: 100px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-right: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0 0 5px 1px #bebebe;
+}
+
+.chat__connect-item {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.chat__connect-item::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -3px;
+  left: -30px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+}
+
+.chat__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.chat__area {
+  flex-grow: 1;
+  max-height: 600px;
+  min-height: 500px;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px #bebebe;
+  overflow-y: scroll;
+}
+
+.message-wrap {  
+  margin-bottom: 1.2em;  
+}
+
+.message-body {
+  display: inline-block;
+  padding: 5px 20px;
+  border: 1px solid #bebebe;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px #bebebe;
+}
+
+.message-title {
+  margin-bottom: 0.8em;
+  color: grey;
+  font-size: 14px;
+}
+
+.message-text {
+  
+}
+
+.form {
+  position: relative;
+}
+
+.new-message-input {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 15px 25px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+
+.send-button {
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: #ffffff;
+  border: 13px solid transparent; 
+  border-left: 20px solid #bebebe;
+  border-right: none;
+  transition: 0.3s border;
+}
+
+.send-button:hover {
+  cursor: pointer;
+  border-left: 20px solid #000000;
+}
+
+.highlight {
+  color: red;
+}
+
+.highlight-message {
+  text-align: right;
+}
+.modal-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-wrap > .modal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 250px auto 0;
+  padding: 25px 30px;
+  width: 400px;
+  font-size: 22px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.modal > .header {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.modal > .content {
+  font-size: 20px;
+}
+
+.modal > .modal-input {
+  padding: 0 20px;
+  height: 40px;
+  font-size: 18px;
+  border: 1px solid black;
+  transition: 0.3s box-shadow, 0.3s border;
+}
+
+.modal > .modal-input:focus {
+  box-shadow: inset 0 0 6px 1px #000000;
+}
+
+.modal > .modal-button-box {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-button-box > .btn {
+  padding: 5px 50px;
+  font-size: 20px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 10px;
+  transition: 0.3s background-color, 0.3s color;
+}
+
+.modal-button-box > .btn:hover {
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.modal > .errore {
+  min-height: 18px;
+  font-size: 16px;
+  color: red;
+}
+
