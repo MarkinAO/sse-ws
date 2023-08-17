@@ -5,4 +5,4 @@
 main branch status badge
 
 #GitHub pages
-https://markinao.github.io/http/
+https://markinao.github.io/sse-ws/
